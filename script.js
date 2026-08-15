@@ -67,44 +67,6 @@
     });
   }, 500);
 
-  /* ── Animated counters ── */
-  var counters = Array.prototype.slice.call(document.querySelectorAll(".stat-num"));
-
-  function animateCounter(el) {
-    var target = parseInt(el.getAttribute("data-count"), 10) || 0;
-    var dur = 1400;
-    var start = null;
-
-    function step(ts) {
-      if (!start) start = ts;
-      var p = Math.min((ts - start) / dur, 1);
-      // ease-out
-      var eased = 1 - Math.pow(1 - p, 3);
-      el.textContent = Math.round(eased * target);
-      if (p < 1) requestAnimationFrame(step);
-    }
-
-    requestAnimationFrame(step);
-  }
-
-  var counterObserver;
-  if ("IntersectionObserver" in window) {
-    counterObserver = new IntersectionObserver(
-      function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            animateCounter(entry.target);
-            counterObserver.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.5 }
-    );
-    counters.forEach(function (c) { counterObserver.observe(c); });
-  } else {
-    counters.forEach(animateCounter);
-  }
-
   /* ── Active nav link on scroll ── */
   var header = document.getElementById("siteHeader");
   var sections = Array.prototype.slice
