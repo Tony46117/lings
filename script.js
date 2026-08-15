@@ -9,20 +9,25 @@
   var heroVideo = document.querySelector(".hero-video");
   if (heroVideo) {
     heroVideo.muted = true;
+    var gestureBound = false;
+    var startOnGesture = function () {
+      tryPlay();
+      window.removeEventListener("pointerdown", startOnGesture);
+      window.removeEventListener("keydown", startOnGesture);
+      gestureBound = false;
+    };
     var tryPlay = function () {
       var p = heroVideo.play();
       if (p && typeof p.catch === "function") {
         p.catch(function () {
           // autoplay was blocked (power-saver etc.) — start on first interaction
-          window.addEventListener("pointerdown", startOnGesture);
-          window.addEventListener("keydown", startOnGesture);
+          if (!gestureBound) {
+            gestureBound = true;
+            window.addEventListener("pointerdown", startOnGesture);
+            window.addEventListener("keydown", startOnGesture);
+          }
         });
       }
-    };
-    var startOnGesture = function () {
-      tryPlay();
-      window.removeEventListener("pointerdown", startOnGesture);
-      window.removeEventListener("keydown", startOnGesture);
     };
     tryPlay();
   }
