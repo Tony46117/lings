@@ -59,7 +59,7 @@
     showReveals();
   }
 
-  // If intro was skipped instantly, reveal everything
+  // Reveal sections already in viewport on load
   window.setTimeout(function () {
     revealEls.forEach(function (el) {
       var r = el.getBoundingClientRect();
