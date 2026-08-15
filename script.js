@@ -115,17 +115,8 @@
     counters.forEach(animateCounter);
   }
 
-  /* ── Header scroll state ── */
-  var header = document.getElementById("siteHeader");
-  function onScroll() {
-    if (window.scrollY > 10) header.classList.add("scrolled");
-    else header.classList.remove("scrolled");
-    highlightNav();
-  }
-  window.addEventListener("scroll", onScroll, { passive: true });
-  onScroll();
-
   /* ── Active nav link on scroll ── */
+  var header = document.getElementById("siteHeader");
   var sections = Array.prototype.slice
     .call(document.querySelectorAll("main section[id], main section"))
     .filter(function (s) { return s.id; });
@@ -142,6 +133,15 @@
       l.classList.toggle("active", match);
     });
   }
+
+  /* ── Header scroll state ── */
+  function onScroll() {
+    if (window.scrollY > 10) header.classList.add("scrolled");
+    else header.classList.remove("scrolled");
+    highlightNav();
+  }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
 
   /* ── Mobile nav toggle ── */
   var toggle = document.getElementById("navToggle");
