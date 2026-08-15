@@ -2,8 +2,30 @@
 (function () {
   "use strict";
 
-  /* ── Note: the avocado time-lapse video now plays persistently as the
-     hero section background (see index.html) — no intro overlay logic. ── */
+  /* ── Hero avocado time-lapse video: persistent background ──
+     Autoplay can be blocked by some browsers/OS power-savers, which leaves
+     only the poster visible. Try to start it immediately, and fall back to
+     starting it on the first user interaction. */
+  var heroVideo = document.querySelector(".hero-video");
+  if (heroVideo) {
+    heroVideo.muted = true;
+    var tryPlay = function () {
+      var p = heroVideo.play();
+      if (p && typeof p.catch === "function") {
+        p.catch(function () {
+          // autoplay was blocked (power-saver etc.) — start on first interaction
+          window.addEventListener("pointerdown", startOnGesture);
+          window.addEventListener("keydown", startOnGesture);
+        });
+      }
+    };
+    var startOnGesture = function () {
+      tryPlay();
+      window.removeEventListener("pointerdown", startOnGesture);
+      window.removeEventListener("keydown", startOnGesture);
+    };
+    tryPlay();
+  }
 
   /* ── Scroll reveal ── */
   var revealEls = Array.prototype.slice.call(document.querySelectorAll(".reveal"));

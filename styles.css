@@ -630,14 +630,13 @@ section { padding: 84px 0; }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 
 @media (prefers-reduced-motion: reduce) {
+  /* Only disable decorative page transitions; the hero avocado video stays
+     visible (site owner requirement) — it is a short muted time-lapse. */
   .reveal, .contact-illustration, .wa-float-pulse { animation: none !important; transition: none !important; }
   .reveal { opacity: 1; transform: none; }
-  /* Reduced-motion users still see the avocado frame as a static hero image */
-  .hero-video { display: none; }
   .hero {
     background:
       linear-gradient(180deg, rgba(8, 28, 17, 0.55) 0%, rgba(8, 28, 17, 0.35) 40%, rgba(8, 28, 17, 0.75) 100%),
-      url("assets/poster.jpg") center / cover no-repeat,
       radial-gradient(120% 120% at 50% 20%, #123b22 0%, #0d2818 60%, #081c11 100%);
   }
 }
