@@ -2,45 +2,8 @@
 (function () {
   "use strict";
 
-  /* ── Intro: reveal the site after the avocado time-lapse video ── */
-  var intro = document.getElementById("intro");
-  var introVideo = intro ? intro.querySelector("video") : null;
-
-  function hideIntro() {
-    if (!intro) return;
-    intro.classList.add("hidden");
-    document.body.style.overflow = "";
-    if (introVideo) {
-      introVideo.pause();
-      introVideo.removeAttribute("autoplay");
-    }
-    window.removeEventListener("keydown", skipIntro);
-  }
-
-  function skipIntro(e) {
-    if (e.key === "Escape" || e.key === "Enter") {
-      hideIntro();
-      showReveals();
-    }
-  }
-
-  // Allow clicking anywhere to skip
-  if (intro) {
-    intro.addEventListener("click", hideIntro);
-    document.body.style.overflow = "hidden"; // lock scroll during intro
-    window.addEventListener("keydown", skipIntro);
-  }
-
-  // Reduced-motion users skip the animation immediately (must run AFTER the
-  // scroll lock above so hideIntro restores scrolling right away)
-  if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    hideIntro();
-  }
-
-  // Auto-dismiss after the video plays through (~10s)
-  window.setTimeout(function () {
-    if (intro) hideIntro();
-  }, 10500);
+  /* ── Note: the avocado time-lapse video now plays persistently as the
+     hero section background (see index.html) — no intro overlay logic. ── */
 
   /* ── Scroll reveal ── */
   var revealEls = Array.prototype.slice.call(document.querySelectorAll(".reveal"));
