@@ -1,11 +1,8 @@
-/* Seedling Kenya — site interactions */
+ 
 (function () {
   "use strict";
 
-  /* ── Hero avocado time-lapse video: persistent background ──
-     Autoplay can be blocked by some browsers/OS power-savers, which leaves
-     only the poster visible. Try to start it immediately, and fall back to
-     starting it on the first user interaction. */
+   
   var heroVideo = document.querySelector(".hero-video");
   if (heroVideo) {
     heroVideo.muted = true;
@@ -20,7 +17,7 @@
       var p = heroVideo.play();
       if (p && typeof p.catch === "function") {
         p.catch(function () {
-          // autoplay was blocked (power-saver etc.) — start on first interaction
+          
           if (!gestureBound) {
             gestureBound = true;
             window.addEventListener("pointerdown", startOnGesture);
@@ -32,7 +29,7 @@
     tryPlay();
   }
 
-  /* ── Scroll reveal ── */
+   
   var revealEls = Array.prototype.slice.call(document.querySelectorAll(".reveal"));
 
   function showReveals() {
@@ -59,7 +56,7 @@
     showReveals();
   }
 
-  // Reveal sections already in viewport on load
+  
   window.setTimeout(function () {
     revealEls.forEach(function (el) {
       var r = el.getBoundingClientRect();
@@ -67,7 +64,7 @@
     });
   }, 500);
 
-  /* ── Active nav link on scroll ── */
+   
   var header = document.getElementById("siteHeader");
   var sections = Array.prototype.slice
     .call(document.querySelectorAll("main section[id], main section"))
@@ -86,7 +83,7 @@
     });
   }
 
-  /* ── Header scroll state ── */
+   
   function onScroll() {
     if (window.scrollY > 10) header.classList.add("scrolled");
     else header.classList.remove("scrolled");
@@ -95,7 +92,7 @@
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
 
-  /* ── Mobile nav toggle ── */
+   
   var toggle = document.getElementById("navToggle");
   var nav = document.getElementById("siteNav");
 
@@ -111,11 +108,11 @@
       toggle.classList.toggle("open", open);
       toggle.setAttribute("aria-expanded", String(open));
     });
-    // Close on link click
+    
     navLinks.forEach(function (l) {
       l.addEventListener("click", closeNav);
     });
-    // Close on outside click
+    
     document.addEventListener("click", function (e) {
       if (nav.classList.contains("open") && !nav.contains(e.target) && e.target !== toggle) {
         closeNav();
@@ -123,7 +120,7 @@
     });
   }
 
-  /* ── Footer year ── */
+   
   var yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 })();

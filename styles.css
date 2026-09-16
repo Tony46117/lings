@@ -1,6 +1,4 @@
-/* ════════════════════════════════════════════════════════════
-   Seedling Kenya — styles
-   ════════════════════════════════════════════════════════════ */
+ 
 
 :root {
   --green-900: #0d2818;
@@ -35,7 +33,7 @@ html { scroll-behavior: smooth; scroll-padding-top: var(--header-h); }
 body {
   font-family: var(--font-body);
   color: var(--ink);
-  /* Light wallpaper for the page below the animated intro/hero */
+   
   background-color: var(--cream);
   background-image:
     radial-gradient(1100px 520px at 88% -4%, rgba(46, 139, 79, 0.10), transparent 60%),
@@ -81,7 +79,7 @@ button { font-family: inherit; cursor: pointer; }
   color: transparent;
 }
 
-/* ══════════════ HERO — AVOCADO TIME-LAPSE VIDEO BACKGROUND ══════════════ */
+ 
 
 .hero-video {
   position: absolute;
@@ -99,7 +97,7 @@ button { font-family: inherit; cursor: pointer; }
     radial-gradient(80% 60% at 20% 40%, rgba(8, 28, 17, 0.20) 0%, transparent 70%);
 }
 
-/* ══════════════ HEADER ══════════════ */
+ 
 
 .site-header {
   position: sticky;
@@ -184,7 +182,7 @@ button { font-family: inherit; cursor: pointer; }
 .nav-toggle.open span:nth-child(2) { opacity: 0; }
 .nav-toggle.open span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
 
-/* ══════════════ BUTTONS ══════════════ */
+ 
 
 .btn {
   display: inline-flex;
@@ -220,7 +218,7 @@ button { font-family: inherit; cursor: pointer; }
 .btn-lg { padding: 16px 32px; font-size: 16px; }
 .btn-sm { padding: 9px 18px; font-size: 14px; }
 
-/* ══════════════ HERO ══════════════ */
+ 
 
 .hero {
   position: relative;
@@ -299,7 +297,7 @@ button { font-family: inherit; cursor: pointer; }
   text-shadow: 0 1px 12px rgba(0, 0, 0, 0.4);
 }
 
-/* ══════════════ SECTIONS ══════════════ */
+ 
 
 section { padding: 84px 0; }
 
@@ -328,7 +326,7 @@ section { padding: 84px 0; }
   font-size: 16px;
 }
 
-/* ══════════════ PRODUCTS ══════════════ */
+ 
 
 .product-grid {
   display: grid;
@@ -411,7 +409,7 @@ section { padding: 84px 0; }
 
 .products-cta p { font-size: 16px; }
 
-/* ══════════════ WHY ══════════════ */
+ 
 
 .why { background: rgba(242, 236, 223, 0.55); }
 
@@ -448,7 +446,7 @@ section { padding: 84px 0; }
 .why-card h3 { font-size: 19px; color: var(--green-900); margin-bottom: 8px; }
 .why-card p { font-size: 14.5px; color: var(--muted); }
 
-/* ══════════════ HOW ══════════════ */
+ 
 
 .how-steps {
   display: grid;
@@ -490,7 +488,7 @@ section { padding: 84px 0; }
 .step h3 { font-size: 18px; color: var(--green-900); margin: 10px 0 8px; }
 .step p { font-size: 14.5px; color: var(--muted); }
 
-/* ══════════════ FAQ ══════════════ */
+ 
 
 .faq { background: rgba(242, 236, 223, 0.55); }
 
@@ -533,7 +531,7 @@ section { padding: 84px 0; }
 
 .faq-item p { margin-top: 12px; color: var(--muted); font-size: 15px; }
 
-/* ══════════════ LOCATIONS ══════════════ */
+ 
 
 .locations-grid {
   display: grid;
@@ -576,7 +574,7 @@ section { padding: 84px 0; }
   font-family: monospace;
 }
 
-/* ══════════════ CONTACT ══════════════ */
+ 
 
 .contact {
   background: linear-gradient(135deg, var(--green-900) 0%, var(--green-800) 100%);
@@ -607,7 +605,7 @@ section { padding: 84px 0; }
   50% { transform: translateY(-14px) rotate(3deg); }
 }
 
-/* ══════════════ FOOTER ══════════════ */
+ 
 
 .site-footer { background: #081c11; color: #a9c4b1; padding-top: 56px; }
 
@@ -639,7 +637,7 @@ section { padding: 84px 0; }
   font-size: 13.5px;
 }
 
-/* ══════════════ FLOATING WHATSAPP ══════════════ */
+ 
 
 .wa-float {
   position: fixed;
@@ -675,14 +673,13 @@ section { padding: 84px 0; }
   100% { transform: scale(1.7); opacity: 0; }
 }
 
-/* ══════════════ REVEAL ANIMATIONS ══════════════ */
+ 
 
 .reveal { opacity: 0; transform: translateY(26px); transition: opacity 0.7s ease, transform 0.7s ease; }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 
 @media (prefers-reduced-motion: reduce) {
-  /* Only disable decorative page transitions; the hero avocado video stays
-     visible (site owner requirement) — it is a short muted time-lapse. */
+   
   .reveal, .contact-illustration, .wa-float-pulse { animation: none !important; transition: none !important; }
   .reveal { opacity: 1; transform: none; }
   .hero {
@@ -692,7 +689,7 @@ section { padding: 84px 0; }
   }
 }
 
-/* ══════════════ RESPONSIVE ══════════════ */
+ 
 
 @media (max-width: 900px) {
   .site-nav {
