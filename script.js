@@ -3,6 +3,51 @@
   "use strict";
 
    
+  var dundoriCoords = [-0.2519, 36.23641];
+  var mapEl = document.getElementById("nurseryMap");
+  if (mapEl && typeof L !== "undefined") {
+    var nurseryMap = L.map(mapEl, {
+      center: dundoriCoords,
+      zoom: 14,
+      scrollWheelZoom: false,
+      attributionControl: true
+    });
+
+    L.tileLayer(
+      "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+      {
+        maxZoom: 19,
+        attribution:
+          'Satellite imagery &copy; <a href="https://www.arcgis.com/">Esri</a> — Source: Esri, Maxar, Earthstar Geographics',
+      }
+    ).addTo(nurseryMap);
+
+    L.marker(dundoriCoords, {
+      icon: L.divIcon({
+        className: "nursery-pin",
+        html: '<span class="nursery-pin-dot"></span>',
+        iconSize: [32, 42],
+        iconAnchor: [16, 42],
+      }),
+    })
+      .addTo(nurseryMap)
+      .bindPopup(
+        '<strong>Seedling Kenya Nursery</strong><br>Dundori Town, Nakuru County'
+      )
+      .openPopup();
+
+    var mapElRef = mapEl;
+    mapElRef.addEventListener("pointerdown", function () {
+      setTimeout(function () {
+        if (nurseryMap.scrollWheelZoom) nurseryMap.scrollWheelZoom.enable();
+      }, 200);
+    });
+    mapElRef.addEventListener("pointerleave", function () {
+      if (nurseryMap.scrollWheelZoom) nurseryMap.scrollWheelZoom.disable();
+    });
+  }
+
+   
   var heroVideo = document.querySelector(".hero-video");
   if (heroVideo) {
     heroVideo.muted = true;

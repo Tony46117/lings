@@ -12,6 +12,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌱</text></svg>" />
 </head>
 <body>
@@ -76,23 +77,23 @@
       <div class="container">
         <p class="section-eyebrow reveal">Find Us</p>
         <h2 class="section-title reveal">Our <span class="grad-text">Locations</span></h2>
-        <p class="section-sub reveal">We serve you from two convenient locations in the Kisumu region.</p>
+        <p class="section-sub reveal">Find us in Dundori Town, Nakuru County — visit our nursery or order for nationwide delivery.</p>
         <div class="locations-grid">
           <div class="location-card reveal">
             <span class="location-icon" aria-hidden="true">📍</span>
-            <h3 class="location-name">Nyalenda</h3>
-            <p class="location-coords">0°15'16.4"S 36°14'02.6"E</p>
-            <a href="https://www.google.com/maps?q=-0.2545556,36.2340556" target="_blank" rel="noopener" class="btn btn-primary btn-sm">
+            <h3 class="location-name">Dundori Town</h3>
+            <p class="location-coords">0°15′06″S 36°14′11″E</p>
+            <a href="https://www.google.com/maps?q=-0.2519,36.23641" target="_blank" rel="noopener" class="btn btn-primary btn-sm">
               View on Map
             </a>
           </div>
-          <div class="location-card reveal">
-            <span class="location-icon" aria-hidden="true">📍</span>
-            <h3 class="location-name">Texas</h3>
-            <p class="location-coords">0°15'31.7"S 36°17'23.5"E</p>
-            <a href="https://www.google.com/maps?q=-0.2588056,36.2898611" target="_blank" rel="noopener" class="btn btn-primary btn-sm">
-              View on Map
-            </a>
+        </div>
+
+        <div class="map-wrap reveal">
+          <div id="nurseryMap" class="nursery-map" role="application" aria-label="Satellite map showing our nursery in Dundori Town"></div>
+          <div class="map-badge">
+            <span class="map-pin" aria-hidden="true"></span>
+            Seedling Kenya · Dundori Town, Nakuru County
           </div>
         </div>
       </div>
@@ -323,6 +324,7 @@
     <span class="wa-float-pulse" aria-hidden="true"></span>
   </a>
 
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
   <script src="script.js"></script>
 </body>
 </html>
