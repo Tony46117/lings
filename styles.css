@@ -737,6 +737,35 @@ section { padding: 84px 0; }
   animation: pulse 2s ease-out infinite;
 }
 
+.call-float {
+  position: fixed;
+  left: 22px;
+  bottom: 22px;
+  z-index: 200;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: var(--green-600);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 26px rgba(31, 107, 57, 0.45);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.call-float svg { width: 28px; height: 28px; }
+
+.call-float:hover { transform: scale(1.1); box-shadow: 0 14px 34px rgba(31, 107, 57, 0.55); }
+
+.call-float-pulse {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid var(--green-600);
+  animation: pulse 2s ease-out infinite;
+}
+
 @keyframes pulse {
   0% { transform: scale(1); opacity: 0.8; }
   100% { transform: scale(1.7); opacity: 0; }
@@ -749,7 +778,7 @@ section { padding: 84px 0; }
 
 @media (prefers-reduced-motion: reduce) {
    
-  .reveal, .contact-illustration, .wa-float-pulse { animation: none !important; transition: none !important; }
+  .reveal, .contact-illustration, .wa-float-pulse, .call-float-pulse { animation: none !important; transition: none !important; }
   .reveal { opacity: 1; transform: none; }
   .hero {
     background:
