@@ -5,7 +5,22 @@
    
   var dundoriCoords = [-0.2519, 36.23641];
   var mapEl = document.getElementById("nurseryMap");
-  if (mapEl && typeof L !== "undefined") {
+  var leafletLoaded = false;
+
+  function loadLeaflet(onReady) {
+    if (typeof L !== "undefined") { onReady(); return; }
+    if (leafletLoaded) return;
+    leafletLoaded = true;
+    var js = document.createElement("script");
+    js.src = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.js";
+    js.integrity = "sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=";
+    js.crossOrigin = "";
+    js.onload = onReady;
+    document.head.appendChild(js);
+  }
+
+  function initNurseryMap() {
+    if (typeof L === "undefined" || !mapEl) return;
     var nurseryMap = L.map(mapEl, {
       center: dundoriCoords,
       zoom: 14,
@@ -36,15 +51,30 @@
       )
       .openPopup();
 
-    var mapElRef = mapEl;
-    mapElRef.addEventListener("pointerdown", function () {
+    mapEl.addEventListener("pointerdown", function () {
       setTimeout(function () {
         if (nurseryMap.scrollWheelZoom) nurseryMap.scrollWheelZoom.enable();
       }, 200);
     });
-    mapElRef.addEventListener("pointerleave", function () {
+    mapEl.addEventListener("pointerleave", function () {
       if (nurseryMap.scrollWheelZoom) nurseryMap.scrollWheelZoom.disable();
     });
+  }
+
+  if (mapEl) {
+    if ("IntersectionObserver" in window) {
+      var mapObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            mapObserver.disconnect();
+            loadLeaflet(initNurseryMap);
+          }
+        });
+      }, { rootMargin: "300px" });
+      mapObserver.observe(mapEl);
+    } else {
+      loadLeaflet(initNurseryMap);
+    }
   }
 
    

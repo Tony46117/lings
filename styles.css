@@ -588,6 +588,8 @@ section { padding: 84px 0; }
 
 .nursery-map { height: 420px; width: 100%; background: var(--green-100); }
 
+.nursery-map .leaflet-container { height: 100%; width: 100%; font: inherit; }
+
 .map-badge {
   position: absolute;
   left: 50%;
